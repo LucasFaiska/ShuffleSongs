@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">Shuffle Songs</string>
+    
+    <string name="splash_logo_content_description">App`s Logo Image</string>
+    <string name="splash_app_name_content_description">App`s Name</string>
+</resources>
