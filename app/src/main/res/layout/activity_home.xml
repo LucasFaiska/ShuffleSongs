@@ -1,17 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".presentation.scenes.home.HomeActivity"
-    android:background="@color/colorPrimaryDark">
+<layout>
+    <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".presentation.scenes.home.HomeActivity"
+        android:background="@color/colorPrimaryDark">
 
-    <com.lfaiska.shufflesongs.presentation.components.RoundedImageView
-        android:layout_width="190dp"
-        android:layout_height="190dp"
-        android:src="@drawable/samplesongartwork"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <com.lfaiska.shufflesongs.presentation.components.RoundedImageView
+            android:layout_width="190dp"
+            android:layout_height="190dp"
+            app:imageUrl="https://firebasestorage.googleapis.com/v0/b/tw-exercicio-mobile.appspot.com/o/albums%2Fjohn-dollar-antihero.png?alt=media&amp;token=68b89bd6-87c4-4122-9998-dbd33f75f90c"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-</android.support.constraint.ConstraintLayout>
+    </android.support.constraint.ConstraintLayout>
+</layout>

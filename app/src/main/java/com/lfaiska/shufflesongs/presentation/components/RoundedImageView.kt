@@ -7,8 +7,26 @@ import android.widget.ImageView
 import android.graphics.drawable.BitmapDrawable
 import android.graphics.Bitmap
 import android.graphics.drawable.Drawable
+import com.lfaiska.shufflesongs.R
 
-class RoundedImageView(context: Context, attributeSet: AttributeSet): ImageView(context, attributeSet) {
+class RoundedImageView(context: Context, val attributeSet: AttributeSet): ImageView(context, attributeSet) {
+
+    private var imageUrl: String? = null
+
+    init {
+        loadAttributes()
+        loadBitmapFromUrl()
+    }
+
+    private fun loadAttributes() {
+        val attributes = context.obtainStyledAttributes(attributeSet, R.styleable.RoundedImageView)
+        imageUrl = attributes.getString(R.styleable.RoundedImageView_imageUrl)
+        attributes.recycle()
+    }
+
+    private fun loadBitmapFromUrl() {
+        DownloadImageTask { bitmap -> this.setImageBitmap(bitmap) }.execute(imageUrl)
+    }
 
     override fun onDraw(canvas: Canvas) {
         if (width == 0 || height == 0) {
