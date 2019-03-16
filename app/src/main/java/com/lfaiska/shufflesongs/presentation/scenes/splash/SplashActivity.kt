@@ -16,6 +16,7 @@ class SplashActivity : AppCompatActivity() {
     }
 
     private fun navigateToHome() {
+        finish()
         startActivity(Intent(this, HomeActivity::class.java))
     }
 
