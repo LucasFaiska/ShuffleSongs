@@ -4,7 +4,7 @@ import com.lfaiska.shufflesongs.domain.Artist
 import com.lfaiska.shufflesongs.domain.Song
 import com.lfaiska.shufflesongs.network.PlaylistService
 
-class PlaylistUseCaseImpl: PlayListUseCase {
+open class PlaylistUseCaseImpl: PlayListUseCase {
 
     override fun downloadPlaylist(handler: (songList: List<Song>) -> Unit) {
         PlaylistService { playlistResponse ->

@@ -9,9 +9,12 @@ import com.lfaiska.shufflesongs.databinding.ActivityHomeBinding
 import com.lfaiska.shufflesongs.domain.Song
 import com.lfaiska.shufflesongs.presentation.scenes.song.SongAdapter
 import android.support.v7.widget.LinearLayoutManager
+import android.view.MenuItem
 import android.view.View
-import com.lfaiska.shufflesongs.domain.useCase.PlayListUseCase
 import com.lfaiska.shufflesongs.domain.useCase.PlaylistUseCaseImpl
+import android.view.MenuInflater
+import android.view.Menu
+
 
 class HomeActivity : AppCompatActivity() {
 
@@ -38,7 +41,7 @@ class HomeActivity : AppCompatActivity() {
     }
 
     private fun observeEvents() {
-        viewModel.songs.observe(this, Observer<List<Song>> { songList ->
+        viewModel.songListMutableLiveData.observe(this, Observer<List<Song>> { songList ->
             populateSongAdapter(songList)
             hideProgress()
         })
@@ -52,5 +55,21 @@ class HomeActivity : AppCompatActivity() {
 
     private fun hideProgress() {
         binding.progressBar.visibility = View.GONE
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        val inflater = menuInflater
+        inflater.inflate(R.menu.menu, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean = when (item.itemId) {
+        R.id.action_shuffle -> {
+            viewModel.onShuffleButtonTouched()
+            true
+        }
+        else -> {
+            super.onOptionsItemSelected(item)
+        }
     }
 }
