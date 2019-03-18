@@ -15,7 +15,7 @@ class SplashActivity : AppCompatActivity() {
         Handler().postDelayed( { navigateToHome() }, TIME_TO_SHOW_SPLASH )
     }
 
-    private fun navigateToHome() {
+    fun navigateToHome() {
         finish()
         startActivity(Intent(this, HomeActivity::class.java))
     }

@@ -12,9 +12,7 @@ import android.support.v7.widget.LinearLayoutManager
 import android.view.MenuItem
 import android.view.View
 import com.lfaiska.shufflesongs.domain.useCase.PlaylistUseCaseImpl
-import android.view.MenuInflater
 import android.view.Menu
-
 
 class HomeActivity : AppCompatActivity() {
 
@@ -53,7 +51,7 @@ class HomeActivity : AppCompatActivity() {
         }
     }
 
-    private fun hideProgress() {
+    fun hideProgress() {
         binding.progressBar.visibility = View.GONE
     }
 

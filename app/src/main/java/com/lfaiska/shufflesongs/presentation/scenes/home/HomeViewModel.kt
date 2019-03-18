@@ -5,7 +5,7 @@ import android.arch.lifecycle.ViewModel
 import com.lfaiska.shufflesongs.domain.Song
 import com.lfaiska.shufflesongs.domain.useCase.PlayListUseCase
 
-open class HomeViewModel(val playListUseCase: PlayListUseCase) : ViewModel() {
+open class HomeViewModel(private val playListUseCase: PlayListUseCase) : ViewModel() {
 
     val songListMutableLiveData = MutableLiveData<List<Song>>()
 

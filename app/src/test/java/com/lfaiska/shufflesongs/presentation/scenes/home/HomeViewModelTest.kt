@@ -8,14 +8,9 @@ import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.junit.runners.JUnit4
-import org.mockito.ArgumentMatchers.any
 import org.mockito.Mock
-import org.mockito.Mockito
 import org.mockito.Mockito.spy
-import org.mockito.Mockito.verify
 import org.mockito.MockitoAnnotations
-import java.util.*
-
 
 @RunWith(JUnit4::class)
 class HomeViewModelTest {
@@ -27,7 +22,7 @@ class HomeViewModelTest {
 
     @Before
     fun setup() {
-        MockitoAnnotations.initMocks(this);
+        MockitoAnnotations.initMocks(this)
         viewModel = spy(HomeViewModel(playlistUseCase))
     }
 
