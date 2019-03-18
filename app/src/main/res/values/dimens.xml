@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="song_list_divisor_height">1dp</dimen>
+    <dimen name="song_list_artwork_height">60dp</dimen>
+    <dimen name="song_list_artwork_width">60dp</dimen>
+    <dimen name="song_list_artwork_margin">10dp</dimen>
+    <dimen name="song_list_songname_margin_left">15dp</dimen>
+    <dimen name="song_list_songname_margin_top">10dp</dimen>
+    <dimen name="song_list_text_size">14sp</dimen>
+    <dimen name="song_list_genre_margin">5dp</dimen>
+
+
+</resources>

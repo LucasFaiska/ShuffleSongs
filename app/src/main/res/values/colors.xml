@@ -7,6 +7,7 @@
 
     <color name="songNameColor">#B8656E</color>
     <color name="artistNameColor">#E2DCDF</color>
+    <color name="songListDivisor">#463D47</color>
 
     <color name="transparent">#00FFFFFF</color>
 </resources>

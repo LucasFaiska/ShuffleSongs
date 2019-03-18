@@ -9,23 +9,28 @@ import android.graphics.Bitmap
 import android.graphics.drawable.Drawable
 import com.lfaiska.shufflesongs.R
 
-class RoundedImageView(context: Context, val attributeSet: AttributeSet): ImageView(context, attributeSet) {
+class RoundedImageView(context: Context, private val attributeSet: AttributeSet): ImageView(context, attributeSet) {
 
-    private var imageUrl: String? = null
+    var imageUrl: String
+        get() = this.toString()
+        set(value) {
+            loadBitmapFromUrl(value)
+        }
 
     init {
         loadAttributes()
-        loadBitmapFromUrl()
     }
 
     private fun loadAttributes() {
         val attributes = context.obtainStyledAttributes(attributeSet, R.styleable.RoundedImageView)
-        imageUrl = attributes.getString(R.styleable.RoundedImageView_imageUrl)
+        attributes.getString(R.styleable.RoundedImageView_imageUrl)?.let { loadBitmapFromUrl(it) }
         attributes.recycle()
     }
 
-    private fun loadBitmapFromUrl() {
-        DownloadImageTask { bitmap -> this.setImageBitmap(bitmap) }.execute(imageUrl)
+    private fun loadBitmapFromUrl(imageUrl: String) {
+        DownloadImageTask { bitmap ->
+            this.setImageBitmap(bitmap)
+        }.execute(imageUrl)
     }
 
     override fun onDraw(canvas: Canvas) {
@@ -34,8 +39,10 @@ class RoundedImageView(context: Context, val attributeSet: AttributeSet): ImageV
         }
 
         drawable?.let {
-            val bitmap = it.getBitmap().copy(Bitmap.Config.ARGB_8888, true)
-            canvas.drawBitmap(getRoundedBitmap(bitmap, width), 0F, 0F, null)
+            it.getBitmap()?.let { drawableBitmap ->
+                val bitmap = drawableBitmap.copy(Bitmap.Config.ARGB_8888, true)
+                canvas.drawBitmap(getRoundedBitmap(bitmap, width), 0F, 0F, null)
+            }
         }
     }
 

@@ -1,16 +1,87 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:background="@color/colorPrimary">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <com.lfaiska.shufflesongs.presentation.components.RoundedImageView
-        android:layout_width="20dp"
-        android:layout_height="20dp"
-        android:src="@drawable/logo"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <data>
 
-</android.support.constraint.ConstraintLayout>
+        <variable
+            name="viewModel"
+            type="com.lfaiska.shufflesongs.presentation.scenes.songs.SongViewModel" />
+    </data>
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:background="@color/colorPrimary">
+
+        <View
+            android:id="@+id/topDivisor"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/song_list_divisor_height"
+            android:background="@color/songListDivisor"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.lfaiska.shufflesongs.presentation.components.RoundedImageView
+            android:id="@+id/artWork"
+            android:layout_width="@dimen/song_list_artwork_height"
+            android:layout_height="@dimen/song_list_artwork_width"
+            android:layout_marginStart="@dimen/song_list_artwork_margin"
+            android:layout_marginLeft="@dimen/song_list_artwork_margin"
+            android:layout_marginTop="@dimen/song_list_artwork_margin"
+            android:layout_marginBottom="@dimen/song_list_artwork_margin"
+            app:imageUrl="@{viewModel.artWork}"
+            app:layout_constraintBottom_toTopOf="@id/bottomDivisor"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/topDivisor" />
+
+        <TextView
+            android:id="@+id/songName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/song_list_songname_margin_left"
+            android:layout_marginLeft="@dimen/song_list_songname_margin_left"
+            android:layout_marginTop="@dimen/song_list_songname_margin_top"
+            android:text="@{viewModel.name}"
+            android:textColor="@color/songNameColor"
+            android:textSize="@dimen/song_list_text_size"
+            app:layout_constraintStart_toEndOf="@id/artWork"
+            app:layout_constraintTop_toTopOf="@id/artWork"
+            tools:text="Não Existe Amor em Sp" />
+
+        <TextView
+            android:id="@+id/artistName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{viewModel.artistName}"
+            android:textColor="@color/artistNameColor"
+            android:textSize="@dimen/song_list_text_size"
+            app:layout_constraintStart_toStartOf="@id/songName"
+            app:layout_constraintTop_toBottomOf="@id/songName"
+            tools:text="Criolo" />
+
+        <TextView
+            android:id="@+id/genre"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/song_list_genre_margin"
+            android:layout_marginLeft="@dimen/song_list_genre_margin"
+            android:text="@{viewModel.formattedGenre}"
+            android:textColor="@color/artistNameColor"
+            android:textSize="@dimen/song_list_text_size"
+            app:layout_constraintStart_toEndOf="@id/artistName"
+            app:layout_constraintTop_toBottomOf="@id/songName"
+            tools:text="(Hip-Hop/Rap)" />
+
+        <View
+            android:id="@+id/bottomDivisor"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/song_list_divisor_height"
+            android:background="@color/songListDivisor"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </android.support.constraint.ConstraintLayout>
+
+</layout>
