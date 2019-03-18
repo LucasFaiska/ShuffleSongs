@@ -7,9 +7,11 @@ import android.os.Bundle
 import com.lfaiska.shufflesongs.R
 import com.lfaiska.shufflesongs.databinding.ActivityHomeBinding
 import com.lfaiska.shufflesongs.domain.Song
-import com.lfaiska.shufflesongs.presentation.scenes.songs.SongAdapter
+import com.lfaiska.shufflesongs.presentation.scenes.song.SongAdapter
 import android.support.v7.widget.LinearLayoutManager
 import android.view.View
+import com.lfaiska.shufflesongs.domain.useCase.PlayListUseCase
+import com.lfaiska.shufflesongs.domain.useCase.PlaylistUseCaseImpl
 
 class HomeActivity : AppCompatActivity() {
 
@@ -30,7 +32,7 @@ class HomeActivity : AppCompatActivity() {
     }
 
     private fun initViewModel() {
-        viewModel = HomeViewModel()
+        viewModel = HomeViewModel(PlaylistUseCaseImpl())
         binding.viewModel = viewModel
         viewModel.loadSongs()
     }

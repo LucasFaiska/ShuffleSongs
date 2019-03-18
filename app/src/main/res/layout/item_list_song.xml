@@ -7,7 +7,7 @@
 
         <variable
             name="viewModel"
-            type="com.lfaiska.shufflesongs.presentation.scenes.songs.SongViewModel" />
+            type="com.lfaiska.shufflesongs.presentation.scenes.song.SongViewModel" />
     </data>
 
     <android.support.constraint.ConstraintLayout

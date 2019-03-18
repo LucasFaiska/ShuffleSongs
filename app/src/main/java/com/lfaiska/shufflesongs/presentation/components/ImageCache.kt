@@ -10,6 +10,6 @@ object ImageCache {
     fun getImage(imageUrl: String) = images.get(imageUrl)
 
     fun addImage(imageUrl: String, bitmap: Bitmap) {
-        images.put(imageUrl, bitmap)
+        images[imageUrl] = bitmap
     }
 }
