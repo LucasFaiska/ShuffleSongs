@@ -5,19 +5,17 @@ import android.arch.lifecycle.ViewModel
 import com.lfaiska.shufflesongs.domain.Song
 import com.lfaiska.shufflesongs.domain.useCase.PlayListUseCase
 
-class HomeViewModel(val playListUseCase: PlayListUseCase) : ViewModel() {
+open class HomeViewModel(val playListUseCase: PlayListUseCase) : ViewModel() {
 
     val songListMutableLiveData = MutableLiveData<List<Song>>()
 
-    private var songList: MutableList<Song>? = null
+    var songList = mutableListOf<Song>()
         set(value) {
-            value?.let {
-                updateSongsOnView(it)
-            }
             field = value
+            updateSongsOnView(value)
         }
 
-    private fun updateSongsOnView(songList: List<Song>) {
+    fun updateSongsOnView(songList: List<Song>) {
         songListMutableLiveData.value = songList
     }
 
@@ -31,22 +29,20 @@ class HomeViewModel(val playListUseCase: PlayListUseCase) : ViewModel() {
         songList = shuffleSongs()
     }
 
-    private fun shuffleSongs(): MutableList<Song>? {
+    fun shuffleSongs(): MutableList<Song> {
         val shuffledSongs = mutableListOf<Song>()
 
-        songList?.let { songList ->
-            while (songList.isNotEmpty()) {
-                val songToBeShuffled = songList.random()
+        while (songList.isNotEmpty()) {
+            val songToBeShuffled = songList.random()
 
-                if (shuffledSongs.isEmpty() || !isSameArtist(songToBeShuffled, shuffledSongs.last())) {
-                    shuffledSongs.add(songToBeShuffled)
-                    songList.remove(songToBeShuffled)
-                }
+            if (shuffledSongs.isEmpty() || !isSameArtist(songToBeShuffled, shuffledSongs.last())) {
+                shuffledSongs.add(songToBeShuffled)
+                songList.remove(songToBeShuffled)
             }
         }
 
         return shuffledSongs
     }
 
-    private fun isSameArtist(songSource: Song, songDest: Song) = songSource.artist.id == songDest.artist.id
+    fun isSameArtist(songSource: Song, songDest: Song) = songSource.artist.id == songDest.artist.id
 }

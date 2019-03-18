@@ -29,12 +29,12 @@ class PlaylistService(val handler: (playlistResponse: PlaylistResponse) -> Unit)
         }
     }
 
-    private fun buildRequestUrl(artistId: Array<out String>): String {
+    fun buildRequestUrl(artistId: Array<out String>): String {
         val requestParameters = artistId.joinToString()
         return baseUrl.replace("{artistId}", requestParameters).removeWhiteSpaces()
     }
 
-    private fun String.removeWhiteSpaces() = this.replace("\\s".toRegex(), "")
+    fun String.removeWhiteSpaces() = this.replace("\\s".toRegex(), "")
 
     private fun performRequest(requestUrl: String): HttpURLConnection {
         val url = URL(requestUrl)
@@ -52,7 +52,7 @@ class PlaylistService(val handler: (playlistResponse: PlaylistResponse) -> Unit)
         return reader.readLines().joinToString("\n")
     }
 
-    private fun deserializeResponse(response: String?): PlaylistResponse {
+    fun deserializeResponse(response: String?): PlaylistResponse {
         val songResponseList = mutableListOf<SongResponse>()
         val responseJson = JSONObject(response)
         val resultsJson = responseJson.getJSONArray("results")
